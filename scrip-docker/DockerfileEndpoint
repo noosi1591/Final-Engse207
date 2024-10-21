@@ -1,0 +1,9 @@
+FROM node:20
+WORKDIR /app/endpoint-api/repository
+RUN git clone https://github.com/noosi1591/sut_fn.git /app
+RUN git pull
+RUN npm install
+COPY ./server.key /app/endpoint-api/repository
+COPY ./server.crt /app/endpoint-api/repository
+EXPOSE 8500 8501
+CMD ["node", "webreport-api-https"]
